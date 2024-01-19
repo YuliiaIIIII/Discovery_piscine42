@@ -1,0 +1,17 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-color: rgb(255, 234, 202);
+}
+button{
+    margin: 50px 0 50px 50px;
+    padding: 10px 20px;
+    background-color: rgb(219, 255, 99);
+    border: 2px solid rgb(64, 106, 0);
+    font-size: 16px;
+    border-radius: 10px;
+    cursor: pointer;
+}

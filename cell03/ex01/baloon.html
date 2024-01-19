@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    .balloon {
+      width: 200px;
+      height: 200px;
+      background-color: red;
+      border-radius: 50%;
+      transition: all 0.3s ease-in-out;
+    }
+  </style>
+</head>
+<body>
+
+<div id="balloon" class="balloon" onclick="changeBalloonColor()"></div>
+
+<script>
+  let balloon = document.getElementById("balloon");
+  let maxSize = 420;
+  let startSize = 200;
+  let colors = ["red", "green", "blue"];
+  let currentColor = 0;
+
+  function changeBalloonColor() {
+    currentColor = (currentColor - 1 + colors.length) % colors.length;
+    updateBalloon();
+  }
+
+  function shrinkBalloonSize() {
+    startSize = Math.max(200, startSize - 5);
+    updateBalloon();
+  }
+
+  function updateBalloon() {
+    balloon.style.width = startSize + "px";
+    balloon.style.height = startSize + "px";
+    balloon.style.backgroundColor = colors[currentColor];
+  }
+
+  balloon.addEventListener("click", function () {
+    changeBalloonColor();
+    startSize += 10;
+    if (startSize > maxSize) {
+      startSize = 200;
+    }
+    updateBalloon();
+  });
+
+  balloon.addEventListener("mouseenter", shrinkBalloonSize);
+  balloon.addEventListener("mouseleave", function () {
+    currentColor = (currentColor - 1 + colors.length) % colors.length;
+    shrinkBalloonSize();
+  });
+</script>
+
+</body>
+</html>
